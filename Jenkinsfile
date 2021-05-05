@@ -5,14 +5,14 @@ pipeline {
         stage('Build') { 
             steps {
                 echo 'Building'
-                sh '/usr/bin/npm install'
-                sh '/usr/bin/npm run build'
+                sh 'npm install'
+                sh 'npm run build'
             }
         }
         stage('Test') { 
             steps {
                 echo 'Testing'
-                sh '/usr/bin/npm run test'
+                sh 'npm run test'
             }
         }
     }
@@ -22,14 +22,14 @@ pipeline {
             emailext attachLog: true,
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
                 recipientProviders: [developers(), requestor()],
-                to: 'wojtekwrobel17@wp.pl',
+                to: 'wojtekwrobel22@gmail.com',
                 subject: "Build failed in Jenkins ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
         }
         success {
             emailext attachLog: true,
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
                 recipientProviders: [developers(), requestor()],
-                to: 'wojtekwrobel17@wp.pl',
+                to: 'wojtekwrobel22@gmail.com',
                 subject: "Successful build in Jenkins ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
         }
     }
