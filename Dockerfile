@@ -5,3 +5,4 @@ RUN apt-get install -y --no-install-recommends git make python g++ yarn
 
 COPY . node-chat-app/
 WORKDIR node-chat-app
+RUN ls
