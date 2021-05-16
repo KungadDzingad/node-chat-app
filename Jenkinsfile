@@ -51,7 +51,7 @@ pipeline {
         stage('Deploy') { 
             steps {
                 echo 'Deploying'
-                sh 'docker build -t node-chat'
+                sh 'docker build -t node-chat ./'
             }
 		 	post {
 				failure {
